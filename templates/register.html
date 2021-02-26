@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Register</title>
+{% endblock %}
+
+
+{% block body %}
+
+<br>
+  <h1>Create an account</h1>
+  <br>
+  {% from '_formhelpers.html' import render_field %}
+  <form action="/register" method="POST">
+    <dl>
+      {{render_field(form.fname)}}
+      {{render_field(form.lname)}}
+      {{render_field(form.email)}}
+      {{render_field(form.username)}}
+      {{render_field(form.password)}}
+      {{render_field(form.confirm)}}
+    </dl>
+    <br>
+    <p><input type="submit" value="Register"></p>
+  </form>
+
+  {% if error %}
+    <p class="error"><strong>Error:</strong>{{ error }}</p>
+  {% endif %}
+
+{% endblock %}
